@@ -1,6 +1,6 @@
 package TestScripts;
 
-
+//this the create Category test
 
 	package genericLibraries;
 
@@ -18,14 +18,14 @@ package TestScripts;
 			
 			
 			category.clickNewBitton();
-			Threa.sleep(3000);
+			Thread.sleep(3000);
 			soft.assertEquals(addCategory.getPageHeader(), "Add New Category");
 			Map<String, String> map =  excel.readFromExcel("sheet1", "Add category");
 			String categoryName = map.get("Name")+jutil.generateRendomNum(100);
 			addCategory.setName(categoryName);
 			addCategory.clickSave();
 			
-			soft.assertTrue(category.getSuccessMessage().contain("Success"));
+			soft.assertTrue(category.getSuccessMessege().contains("Success"));
 			boolean isPresent = false;
 			List<webElement> categoryList = category.getCategoryList();
 			for (WebElement e : categoryList) {
@@ -37,7 +37,7 @@ package TestScripts;
 			
 			category.clickDeleteButton(categoryName, driver);
 			category.clickDelete();
-			soft.assertTrue(category.getSuccessMessage().contains("Success"));
+			soft.assertTrue(category.getSuccessMessege().contains("Success"));
 			soft.assertAll();
 		}
 		
